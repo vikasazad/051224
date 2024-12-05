@@ -1,10 +1,14 @@
 import admin from "firebase-admin";
 import { Message } from "firebase-admin/messaging";
 import { NextRequest, NextResponse } from "next/server";
+import * as dotenv from "dotenv";
 
-// Initialize Firebase Admin SDK
+dotenv.config();
+
 if (!admin.apps.length) {
-  const serviceAccount = require("../../../../service_key.json");
+  const serviceAccount = JSON.parse(
+    process.env.FIREBASE_ADMIN_CREDENTIALS || "{}"
+  );
   admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
   });
