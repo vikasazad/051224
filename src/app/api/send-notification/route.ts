@@ -9,7 +9,9 @@ if (!process.env.FIREBASE_ADMIN_CREDENTIALS) {
   throw new Error("FIREBASE_ADMIN_CREDENTIALS is not defined");
 }
 
-const serviceAccount = process.env.FIREBASE_ADMIN_CREDENTIALS; // Replace escaped newlines
+const serviceAccount = JSON.parse(
+  process.env.FIREBASE_ADMIN_CREDENTIALS.replace(/\\n/g, "\n")
+); // Replace escaped newlines
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
