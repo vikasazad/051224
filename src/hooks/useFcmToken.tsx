@@ -344,6 +344,7 @@ const GlobalNotificationProvider: React.FC<{ children: React.ReactNode }> = ({
 
     setNotificationPermissionStatus(Notification.permission);
     setToken(fetchedToken);
+    console.log("tokem", fetchedToken);
     isLoading.current = false;
   };
 
