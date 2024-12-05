@@ -10,7 +10,7 @@ if (!process.env.FIREBASE_ADMIN_CREDENTIALS) {
 }
 
 const serviceAccount = JSON.parse(
-  process.env.FIREBASE_ADMIN_CREDENTIALS.replace(/\\n/g, "\n") // Replace escaped newlines
+  process.env.FIREBASE_ADMIN_CREDENTIALS // Replace escaped newlines
 );
 
 admin.initializeApp({
